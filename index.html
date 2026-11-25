@@ -520,19 +520,19 @@ class Component extends DCLogic {
     const dmId = s.dmEtapa ?? 'antes';
 
     const tabsData = [
-      { id: 'aike', cliente: 'Aike Drones', rubro: 'Drones agrícolas · estrategia, ventas, contenido y demostraciones a campo', logo: 'media/1cde8ba0073697210501598ab14074a1.png', logoSize: '48px' },
-      { id: 'svb', cliente: 'SVB Suipacha', rubro: 'Consignataria de hacienda · estrategia de redes, contenido y marca', logo: 'media/3325430781be6dece150db28aa2de169.png', logoSize: '60px' },
-      { id: 'donmanuel', cliente: 'Cabaña Don Manuel', rubro: 'Caballos criollos · Instagram de su remate, con resultados medidos', logo: 'media/9dd3b0773c4aa0b9acc8ed9b8e9ca0f8.png', logoSize: '56px' }
+      { id: 'aike', cliente: 'Aike Drones', rubro: 'Drones agrícolas · estrategia, ventas, contenido y demostraciones a campo', logo: 'media/1cde8ba0073697210501598ab14074a1.png', logoSize: '48px', onBg: '#16352B', onFg: '#F3F1E7', onSub: '#7CC79A' },
+      { id: 'svb', cliente: 'SVB Suipacha', rubro: 'Consignataria de hacienda · estrategia de redes, contenido y marca', logo: 'media/3325430781be6dece150db28aa2de169.png', logoSize: '54px', onBg: '#01416F', onFg: '#FFFFFF', onSub: '#7FD3F5' },
+      { id: 'donmanuel', cliente: 'Cabaña Don Manuel', rubro: 'Caballos criollos · Instagram de su remate, con resultados medidos', logo: 'media/9dd3b0773c4aa0b9acc8ed9b8e9ca0f8.png', logoSize: '56px', onBg: '#231C16', onFg: '#F3EBDD', onSub: '#D2AE72' }
     ];
     const tabs = tabsData.map((t) => {
       const on = t.id === cliente;
       return Object.assign({}, t, {
         pick: () => this.setState({ cliente: t.id }),
         pressed: on ? 'true' : 'false',
-        bg: on ? '#33475C' : '#FFFFFF',
-        fg: on ? '#F1F3F5' : '#14243A',
-        sub: on ? '#C5D0DB' : '#4D6079',
-        bd: on ? '#33475C' : '#FFFFFF'
+        bg: on ? t.onBg : '#FFFFFF',
+        fg: on ? t.onFg : '#14243A',
+        sub: on ? t.onSub : '#4D6079',
+        bd: on ? t.onBg : '#FFFFFF'
       });
     });
 
