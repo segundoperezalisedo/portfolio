@@ -101,7 +101,7 @@ button{font:inherit}
 <sc-for list="{{tabs}}" as="t" hint-placeholder-count="2">
 <button type="button" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="flex: 1 1 320px; min-width: 0; min-height: 44px; display: flex; gap: 16px; align-items: center; text-align: left; padding: 16px 20px; border-radius: 24px; border: 2px solid {{t.bd}}; background: {{t.bg}}; color: {{t.fg}}; cursor: pointer">
 <span style="flex: none; width: 60px; height: 60px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; overflow: hidden">
-<img src="{{t.logo}}" alt="" style="width: {{t.logoSize}}; height: {{t.logoSize}}; object-fit: contain">
+<img src="{{t.logo}}" alt="" style="flex: none; width: {{t.logoSize}}; height: {{t.logoSize}}; object-fit: contain">
 </span>
 <span style="display: flex; flex-direction: column; gap: 3px; min-width: 0">
 <span style="font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 600; line-height: 1.15">{{t.cliente}}</span>
@@ -521,7 +521,7 @@ class Component extends DCLogic {
 
     const tabsData = [
       { id: 'aike', cliente: 'Aike Drones', rubro: 'Drones agrícolas · estrategia, ventas, contenido y demostraciones a campo', logo: 'media/1cde8ba0073697210501598ab14074a1.png', logoSize: '48px', onBg: '#16352B', onFg: '#F3F1E7', onSub: '#7CC79A' },
-      { id: 'svb', cliente: 'SVB Suipacha', rubro: 'Consignataria de hacienda · estrategia de redes, contenido y marca', logo: 'media/3325430781be6dece150db28aa2de169.png', logoSize: '54px', onBg: '#01416F', onFg: '#FFFFFF', onSub: '#7FD3F5' },
+      { id: 'svb', cliente: 'SVB Suipacha', rubro: 'Consignataria de hacienda · estrategia de redes, contenido y marca', logo: 'media/3325430781be6dece150db28aa2de169.png', logoSize: '76px', onBg: '#012A47', onFg: '#FFFFFF', onSub: '#7FD3F5' },
       { id: 'donmanuel', cliente: 'Cabaña Don Manuel', rubro: 'Caballos criollos · Instagram de su remate, con resultados medidos', logo: 'media/9dd3b0773c4aa0b9acc8ed9b8e9ca0f8.png', logoSize: '56px', onBg: '#231C16', onFg: '#F3EBDD', onSub: '#D2AE72' }
     ];
     const tabs = tabsData.map((t) => {
