@@ -111,7 +111,7 @@ button{font:inherit}
 </sc-for>
 </nav>
 
-<sc-if value="{{isDm}}" hint-placeholder-val="{{true}}">
+<sc-if value="{{isDm}}" hint-placeholder-val="{{false}}">
 <section aria-label="Cabaña Don Manuel" style="background: #FFFFFF; border-radius: 30px; overflow: hidden; display: flex; flex-direction: column">
 <div style="background: #231C16; color: #F3EBDD; padding: 32px clamp(18px, 5vw, 40px); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
 <div style="display: flex; flex-direction: column; gap: 8px; flex: 1 1 420px; min-width: 0">
@@ -119,7 +119,7 @@ button{font:inherit}
 <h2 style="margin: 0; font-family: 'Outfit', sans-serif; font-size: 34px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1">Cabaña Don Manuel</h2>
 <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #D9CCB8; max-width: 620px">La cabaña de Fernando y Paula Saenz Valiente cría caballos criollos con el prefijo Viejo Campero. Me encargué del Instagram de la 5ª edición de su remate: 51 caballos en la Sociedad Rural Argentina, con cuatro días para preofertar y sin publicidad paga.</p>
 </div>
-<img src="media/73f8d7cf0874cd19538d050a62b5be36.png" alt="Logo de Cabaña Don Manuel" style="flex: none; width: 168px; height: auto; display: block">
+<span style="flex: none; width: 190px; height: 96px; border-radius: 20px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><img src="media/797befc6f079b4360bae95ef8de8bf8b.png" alt="Logo de Cabaña Don Manuel" style="width: 172px; height: auto; display: block"></span>
 <div style="flex: 1 1 100%; display: flex; flex-direction: column; gap: 14px">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px">
 <div style="background: #342A21; border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px">
@@ -182,7 +182,7 @@ button{font:inherit}
 <p style="margin: 0; font-size: 13px; color: #5A4E40">Las piezas de antes y después del remate · deslizá para ver más</p>
 </div>
 <div role="group" aria-label="Piezas de Cabaña Don Manuel" style="display: flex; flex-wrap: wrap; gap: 8px">
-<sc-for list="{{dmGrupos}}" as="g" hint-placeholder-count="6">
+<sc-for list="{{dmGrupos}}" as="g" hint-placeholder-count="3">
 <button type="button" onClick="{{g.pick}}" aria-pressed="{{g.pressed}}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid #231C16; background: {{g.bg}}; color: {{g.fg}}; font-size: 14px; font-weight: 600; cursor: pointer">{{g.nombre}} <span style="font-weight: 500; opacity: 0.75">{{g.cant}}</span></button>
 </sc-for>
 </div>
@@ -339,7 +339,7 @@ button{font:inherit}
 </section>
 </sc-if>
 
-<sc-if value="{{isAike}}" hint-placeholder-val="{{false}}">
+<sc-if value="{{isAike}}" hint-placeholder-val="{{true}}">
 <section aria-label="Aike Drones" style="background: #FFFFFF; border-radius: 30px; overflow: hidden; display: flex; flex-direction: column">
 <div style="background: #16352B; color: #F3F1E7; padding: 32px clamp(18px, 5vw, 40px); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
 <div style="display: flex; flex-direction: column; gap: 8px; flex: 1 1 420px; min-width: 0">
@@ -514,15 +514,15 @@ class DCLogic{constructor(){this.state={};this.props={};}setState(s){Object.assi
 class Component extends DCLogic {
   renderVals() {
     const s = this.state || {};
-    const cliente = s.cliente ?? (this.props.clienteInicial ?? 'donmanuel');
+    const cliente = s.cliente ?? (this.props.clienteInicial ?? 'aike');
     const svbId = s.svbServ ?? 'estrategia';
     const aikeId = s.aikeServ ?? 'estrategia';
     const dmId = s.dmEtapa ?? 'antes';
 
     const tabsData = [
-      { id: 'donmanuel', cliente: 'Cabaña Don Manuel', rubro: 'Caballos criollos · Instagram de su remate, con resultados medidos', logo: 'media/ed6a025229d761370cb51dbbe1aba7ea.png', logoSize: '60px' },
       { id: 'aike', cliente: 'Aike Drones', rubro: 'Drones agrícolas · estrategia, ventas, contenido y demostraciones a campo', logo: 'media/1cde8ba0073697210501598ab14074a1.png', logoSize: '48px' },
-      { id: 'svb', cliente: 'SVB Suipacha', rubro: 'Consignataria de hacienda · estrategia de redes, contenido y marca', logo: 'media/3325430781be6dece150db28aa2de169.png', logoSize: '60px' }
+      { id: 'svb', cliente: 'SVB Suipacha', rubro: 'Consignataria de hacienda · estrategia de redes, contenido y marca', logo: 'media/3325430781be6dece150db28aa2de169.png', logoSize: '60px' },
+      { id: 'donmanuel', cliente: 'Cabaña Don Manuel', rubro: 'Caballos criollos · Instagram de su remate, con resultados medidos', logo: 'media/9dd3b0773c4aa0b9acc8ed9b8e9ca0f8.png', logoSize: '56px' }
     ];
     const tabs = tabsData.map((t) => {
       const on = t.id === cliente;
@@ -610,7 +610,7 @@ class Component extends DCLogic {
         fg: on ? onFg : offFg
       };
     });
-    const EXT = {"1cde8ba0073697210501598ab14074a1": "png", "3325430781be6dece150db28aa2de169": "png", "997a359d90956c498a33c1aa5ca1ff01": "jpg", "377be3e3534bfdaba8416e7b3317306f": "jpg", "0fba38df7931d66710a959ff7d0e9b46": "jpg", "55b89d8f5c66c6f946097706ddd185a0": "jpg", "cf675b1dfcd60d3b9d27d1fbbcf53305": "jpg", "479b0aecc4300f027ad974f7a7515a1f": "jpg", "2a85dd928a34c61ab1d6c5bcf39a1ab8": "jpg", "ba803da0c3979cfe4c9b3e09b4a81de7": "jpg", "8f865b1e01edb3e9919be87f14400a69": "jpg", "646ea4c80c556e18a2671b6885792afb": "jpg", "3accc6cf55e0436d5a9c3df6e92c128c": "jpg", "24712de513f27971813d71679649510e": "jpg", "04ff2c2243a115a76e96e97d2a9479b8": "jpg", "7f56cec63daed94fddd462ba67d312b6": "jpg", "3f0e161ec1481ee0b13e32bce9bcecb3": "jpg", "ff7193e02c20bda64c3d917bbdb6eafd": "jpg", "00f60c9dbd88aa7f28092ccd3799e44e": "jpg", "376566d56e71c1bd251429b754927105": "jpg", "65f0fa97d7c8d8ab2d8f8b173792bf22": "jpg", "60934d9fc9144a71296e5f4db0493cdb": "jpg", "5d42e74ef64445f24c9823584a963020": "mp4", "3362f9ba73369e12fd9778d2a284c542": "mp4", "2fe3c04fc85034afe8231f295a28c5a2": "mp4", "c5fb425bd96ae2fca26c62fd70e989a3": "jpg", "f2fcda885634ce85e245381c721cdd29": "jpg", "e917e999826b27001f52f56b2389b78a": "jpg", "3aae0d08680ae14ba7bb90dd7bf6a49f": "mp4", "10e1a9d7f581d1b35e28ea9fb9dcb737": "mp4", "bb8c8b56effb848d46a947772e3d7232": "jpg", "f5134c9a0fb8a30ce006729e56cfd40f": "jpg", "ca07fb98d677de8c5083c0a2c31bd36d": "png", "1d9a3ca013474ebe215695162280b165": "jpg", "dc617da03be09a6eb274201c7a9448ea": "png", "dd71831f3ec10a152e85c63b86740901": "png", "70564406fa148af65d25c8021c77482c": "png", "6d7d39efcdd1b63db787f06f2eaa285c": "jpg", "b6d3d5154e0986ffcb8f40e4c46f32e5": "jpg", "31fc341a2497fbf7c20208fc81d3316f": "jpg", "9dddf0f79b25b6d85d4714d0f590578b": "jpg", "ed1cce1e88e1d7b89a98ba6a5f4f6a37": "jpg", "dd7748d212169ba6a3ca7dd6165910fb": "jpg", "483a5c16b5f8aa214c57b4b64335a65d": "mp4", "3281882cb1504970ad46cdcef29a2f6d": "jpg", "3645756fe38121edcfec2639d04b0bc5": "jpg", "44b28731b94869dda41464540e831d3c": "jpg", "45c5a55dea49808627c1ba1a0271faa6": "jpg", "811542d95512a4959adffe7c24f2a707": "jpg", "6645470c1f3d2e2545d4e861900b1909": "jpg", "65545b329b56a5530383a26e70e33529": "jpg", "945b6a3b9d6db256afb3e3cd8692f3ae": "jpg", "488dbc90dcf759d0db63a9f68069110b": "jpg", "651f75fe5aa05afad509dce03637dad0": "jpg", "d3d5db9d67af54f07b9ef7f2b59511b6": "jpg", "2fd25c8755296406ac9484ac1b2ed5ff": "jpg", "fa90021617485e028b8dabce0d53af66": "jpg", "750d1c841de337b81440d40de9ee9db2": "jpg", "9f56436549dfb98db892ff0ea5fc2735": "mp4", "e6d89f8c518aa208bcb49c8a44fa7147": "jpg", "fe68f7622b348d60b6b99966ba527ecf": "jpg", "339098ddb9070ca275f21aae26b27cd0": "jpg", "e7b047f369c63cbdf3d9c92d95c8541a": "jpg", "0b6c19e6b74d1a302409f8d52242bb55": "mp4", "f5a0192b10eea5e6fd105eb988d0d5ec": "jpg", "81a322d66d5aa52d12b656a3476cb0aa": "jpg", "e30ed8500f92e3d0676d6a4062951516": "mp4", "6140c321f3843f38d691ae033dc7df33": "jpg", "61cc7f5e3bdff231162187d5b3a969e2": "mp4", "691c758f0bb881a13c85fe529094fd91": "jpg", "726dd735a090a200f1a46970a418ef2a": "mp4", "52604b45f15b12cea34b429d4fc48e72": "jpg", "e754f453bafe3f86b3131bdf9df6bbeb": "mp4", "0fc746c127e6a61d7d0ec145da95e409": "jpg", "dfabee0a432a831c6e63c786cfd08154": "mp4", "ca941ef2e401b28fd29531ffa8890d5f": "jpg", "e3963872c617687bdf1532784af94ccd": "jpg", "88587974934b691893d4782e46734e2e": "mp4", "6000926b121f9e3b70ed2c47e942ff4d": "jpg", "0213eff5b749513cc52716bbb80fa7dc": "mp4", "8301609fbb8a1bf52ea74434b795cf1d": "jpg", "c41332886f4df9ab17c0b1fe1ace1ead": "mp4", "7c6c7916e47b5d4aafa12071ecda75be": "jpg", "172f5a57f20b0c01b2ca5c8e2f71b317": "jpg", "2102937f684e39d3df8e54a594482b19": "jpg", "8481cb27c7036814c8c6914ef23bbfd3": "jpg", "b54bdbf31c0fc69a6af7fd5b2b13ca89": "mp4", "48922d5d8dc2e730c79ccf6df2710e2d": "jpg", "1a9d09eee1490a2216acaa303783422c": "mp4", "97b666fc88331ab92d8c45d9c226959d": "jpg", "d86f0d6edad1597d69311754e40b52cd": "jpg", "a5bac48f7d39d5989c0add525ed91943": "jpg", "660a5e52ec1a4d3bacfea41a74a63e43": "jpg", "ea3a9ee74f9650825b73941578b5c0e8": "jpg", "4e10c16f849846e4d74631f6f9ac7762": "jpg", "363043bd0643fa46410779f1395a20ea": "jpg", "40882990254629f5311d1e5c399dd405": "jpg", "9ebca31581d45fa804066b4f854557cb": "jpg", "a886ff51376cd0bdaad814adc5c2f1fc": "jpg", "a5f3db24460e98c7a0fc06327ad67893": "jpg", "57d79240a335888f7a8c8304d0f1c963": "jpg", "73f8d7cf0874cd19538d050a62b5be36": "png", "ed6a025229d761370cb51dbbe1aba7ea": "png", "9678e4253fbf091945350bd381bb7904": "mp4", "c00892914c4a03d226999239a5909e72": "jpg", "41e19838061a0f45b6f3ca2a2b8a0816": "jpg", "11dbc6eab5b7db8f8b9477efcbfc34bc": "jpg", "71f3b66f089677e0c14b60a7bf1b2f78": "jpg", "95584ad2ff5428cd0159dec9512337f6": "jpg", "9835f49f4d997a34effb5082fb18be39": "jpg", "5cba6fc07e4147d5e01abecacd02832b": "jpg", "833d08a197476d3d5b7bed650c3de33f": "mp4", "ae3a3de28e0a2d2c373187fadbd64077": "jpg", "46d0760f2b211b3a71dd635b65bbb00d": "mp4", "43d33425587f7179d62d140bb7d48119": "jpg", "9687a332c61f3e841bf7a31e442ac67d": "jpg", "eb88da48edbcb86af8bed241ade9355c": "jpg", "6a91755746a812b5e9a6082b48b77b50": "jpg", "7446bcd14fd09a6657805dad1351bbb1": "jpg", "e01b485e480b517034741fe693c367be": "jpg", "b6ab4cae1116a748ab7051602a3d9729": "jpg", "9a0219de4de43e8d989089543ff7afea": "jpg", "a810096420ca7d943b4e290fc929bbbc": "jpg", "afc16ead30e54ebfd7b248e7e38ac7fa": "jpg"}; const B = (id) => 'media/' + id + '.' + EXT[id];
+    const EXT = {"1cde8ba0073697210501598ab14074a1": "png", "3325430781be6dece150db28aa2de169": "png", "997a359d90956c498a33c1aa5ca1ff01": "jpg", "377be3e3534bfdaba8416e7b3317306f": "jpg", "0fba38df7931d66710a959ff7d0e9b46": "jpg", "55b89d8f5c66c6f946097706ddd185a0": "jpg", "cf675b1dfcd60d3b9d27d1fbbcf53305": "jpg", "479b0aecc4300f027ad974f7a7515a1f": "jpg", "2a85dd928a34c61ab1d6c5bcf39a1ab8": "jpg", "ba803da0c3979cfe4c9b3e09b4a81de7": "jpg", "8f865b1e01edb3e9919be87f14400a69": "jpg", "646ea4c80c556e18a2671b6885792afb": "jpg", "3accc6cf55e0436d5a9c3df6e92c128c": "jpg", "24712de513f27971813d71679649510e": "jpg", "04ff2c2243a115a76e96e97d2a9479b8": "jpg", "7f56cec63daed94fddd462ba67d312b6": "jpg", "3f0e161ec1481ee0b13e32bce9bcecb3": "jpg", "ff7193e02c20bda64c3d917bbdb6eafd": "jpg", "00f60c9dbd88aa7f28092ccd3799e44e": "jpg", "376566d56e71c1bd251429b754927105": "jpg", "65f0fa97d7c8d8ab2d8f8b173792bf22": "jpg", "60934d9fc9144a71296e5f4db0493cdb": "jpg", "5d42e74ef64445f24c9823584a963020": "mp4", "3362f9ba73369e12fd9778d2a284c542": "mp4", "2fe3c04fc85034afe8231f295a28c5a2": "mp4", "c5fb425bd96ae2fca26c62fd70e989a3": "jpg", "f2fcda885634ce85e245381c721cdd29": "jpg", "e917e999826b27001f52f56b2389b78a": "jpg", "3aae0d08680ae14ba7bb90dd7bf6a49f": "mp4", "10e1a9d7f581d1b35e28ea9fb9dcb737": "mp4", "bb8c8b56effb848d46a947772e3d7232": "jpg", "f5134c9a0fb8a30ce006729e56cfd40f": "jpg", "ca07fb98d677de8c5083c0a2c31bd36d": "png", "1d9a3ca013474ebe215695162280b165": "jpg", "dc617da03be09a6eb274201c7a9448ea": "png", "dd71831f3ec10a152e85c63b86740901": "png", "70564406fa148af65d25c8021c77482c": "png", "6d7d39efcdd1b63db787f06f2eaa285c": "jpg", "b6d3d5154e0986ffcb8f40e4c46f32e5": "jpg", "31fc341a2497fbf7c20208fc81d3316f": "jpg", "9dddf0f79b25b6d85d4714d0f590578b": "jpg", "ed1cce1e88e1d7b89a98ba6a5f4f6a37": "jpg", "dd7748d212169ba6a3ca7dd6165910fb": "jpg", "483a5c16b5f8aa214c57b4b64335a65d": "mp4", "3281882cb1504970ad46cdcef29a2f6d": "jpg", "3645756fe38121edcfec2639d04b0bc5": "jpg", "44b28731b94869dda41464540e831d3c": "jpg", "45c5a55dea49808627c1ba1a0271faa6": "jpg", "811542d95512a4959adffe7c24f2a707": "jpg", "6645470c1f3d2e2545d4e861900b1909": "jpg", "65545b329b56a5530383a26e70e33529": "jpg", "945b6a3b9d6db256afb3e3cd8692f3ae": "jpg", "488dbc90dcf759d0db63a9f68069110b": "jpg", "651f75fe5aa05afad509dce03637dad0": "jpg", "d3d5db9d67af54f07b9ef7f2b59511b6": "jpg", "2fd25c8755296406ac9484ac1b2ed5ff": "jpg", "fa90021617485e028b8dabce0d53af66": "jpg", "750d1c841de337b81440d40de9ee9db2": "jpg", "9f56436549dfb98db892ff0ea5fc2735": "mp4", "e6d89f8c518aa208bcb49c8a44fa7147": "jpg", "fe68f7622b348d60b6b99966ba527ecf": "jpg", "339098ddb9070ca275f21aae26b27cd0": "jpg", "e7b047f369c63cbdf3d9c92d95c8541a": "jpg", "0b6c19e6b74d1a302409f8d52242bb55": "mp4", "f5a0192b10eea5e6fd105eb988d0d5ec": "jpg", "81a322d66d5aa52d12b656a3476cb0aa": "jpg", "e30ed8500f92e3d0676d6a4062951516": "mp4", "6140c321f3843f38d691ae033dc7df33": "jpg", "61cc7f5e3bdff231162187d5b3a969e2": "mp4", "691c758f0bb881a13c85fe529094fd91": "jpg", "726dd735a090a200f1a46970a418ef2a": "mp4", "52604b45f15b12cea34b429d4fc48e72": "jpg", "e754f453bafe3f86b3131bdf9df6bbeb": "mp4", "0fc746c127e6a61d7d0ec145da95e409": "jpg", "dfabee0a432a831c6e63c786cfd08154": "mp4", "ca941ef2e401b28fd29531ffa8890d5f": "jpg", "e3963872c617687bdf1532784af94ccd": "jpg", "88587974934b691893d4782e46734e2e": "mp4", "6000926b121f9e3b70ed2c47e942ff4d": "jpg", "0213eff5b749513cc52716bbb80fa7dc": "mp4", "8301609fbb8a1bf52ea74434b795cf1d": "jpg", "c41332886f4df9ab17c0b1fe1ace1ead": "mp4", "7c6c7916e47b5d4aafa12071ecda75be": "jpg", "172f5a57f20b0c01b2ca5c8e2f71b317": "jpg", "2102937f684e39d3df8e54a594482b19": "jpg", "8481cb27c7036814c8c6914ef23bbfd3": "jpg", "b54bdbf31c0fc69a6af7fd5b2b13ca89": "mp4", "48922d5d8dc2e730c79ccf6df2710e2d": "jpg", "1a9d09eee1490a2216acaa303783422c": "mp4", "97b666fc88331ab92d8c45d9c226959d": "jpg", "d86f0d6edad1597d69311754e40b52cd": "jpg", "a5bac48f7d39d5989c0add525ed91943": "jpg", "660a5e52ec1a4d3bacfea41a74a63e43": "jpg", "ea3a9ee74f9650825b73941578b5c0e8": "jpg", "4e10c16f849846e4d74631f6f9ac7762": "jpg", "363043bd0643fa46410779f1395a20ea": "jpg", "40882990254629f5311d1e5c399dd405": "jpg", "9ebca31581d45fa804066b4f854557cb": "jpg", "a886ff51376cd0bdaad814adc5c2f1fc": "jpg", "a5f3db24460e98c7a0fc06327ad67893": "jpg", "57d79240a335888f7a8c8304d0f1c963": "jpg", "73f8d7cf0874cd19538d050a62b5be36": "png", "ed6a025229d761370cb51dbbe1aba7ea": "png", "9678e4253fbf091945350bd381bb7904": "mp4", "c00892914c4a03d226999239a5909e72": "jpg", "41e19838061a0f45b6f3ca2a2b8a0816": "jpg", "11dbc6eab5b7db8f8b9477efcbfc34bc": "jpg", "71f3b66f089677e0c14b60a7bf1b2f78": "jpg", "95584ad2ff5428cd0159dec9512337f6": "jpg", "9835f49f4d997a34effb5082fb18be39": "jpg", "5cba6fc07e4147d5e01abecacd02832b": "jpg", "833d08a197476d3d5b7bed650c3de33f": "mp4", "ae3a3de28e0a2d2c373187fadbd64077": "jpg", "46d0760f2b211b3a71dd635b65bbb00d": "mp4", "43d33425587f7179d62d140bb7d48119": "jpg", "9687a332c61f3e841bf7a31e442ac67d": "jpg", "eb88da48edbcb86af8bed241ade9355c": "jpg", "6a91755746a812b5e9a6082b48b77b50": "jpg", "7446bcd14fd09a6657805dad1351bbb1": "jpg", "e01b485e480b517034741fe693c367be": "jpg", "b6ab4cae1116a748ab7051602a3d9729": "jpg", "9a0219de4de43e8d989089543ff7afea": "jpg", "a810096420ca7d943b4e290fc929bbbc": "jpg", "afc16ead30e54ebfd7b248e7e38ac7fa": "jpg", "797befc6f079b4360bae95ef8de8bf8b": "png", "9dd3b0773c4aa0b9acc8ed9b8e9ca0f8": "png", "2472c0e71e8c36a5e7ba5c1130105ac0": "mp4", "bfa1ae5f8b68b3fe6487d38933e2fdda": "jpg", "f19dc92a1e0b6a54e90d436c9924b153": "mp4", "8c110c6be7fbfbe8d0c4b37186e666c6": "jpg", "d5b0b3965f055457396324a166d7ba0f": "mp4", "5610fdfc94983865ad959a4136636137": "jpg", "e7ba88d355115e1c672df6af51196330": "mp4", "683e637c08ed8aa5f435be6826d50a1a": "jpg"}; const B = (id) => 'media/' + id + '.' + EXT[id];
     const img = (id, ratio, cap, alt) => ({ esImg: true, esVideo: false, src: B(id), poster: '', w: ratio === '1:1' ? 380 : ratio === '4:5' ? 304 : ratio === '3:4' ? 285 : ratio === '4:3' ? 507 : ratio === 'A4' ? 269 : 214, cap: cap, alt: alt });
     const vid = (id, poster, cap, alt, w) => ({ esImg: false, esVideo: true, src: B(id), poster: B(poster), w: w || 214, cap: cap, alt: alt });
     const gruposData = [
@@ -697,19 +697,12 @@ class Component extends DCLogic {
       ] }
     ];
     const dmGruposData = [
-      { id: 'lotes', nombre: 'Carruseles por lote', items: [
-        img('fe68f7622b348d60b6b99966ba527ecf', '4:5', 'Lote 3 · Curandera · la pieza más vista', 'Carrusel del lote 3, embrión de Viejo Campero Curandera: foto de la yegua en la pista de Palermo'),
-        img('339098ddb9070ca275f21aae26b27cd0', '4:5', 'Lote 3 · Pedigree', 'Placa de pedigree del embrión de Curandera'),
-        img('e7b047f369c63cbdf3d9c92d95c8541a', '4:5', 'Lote 7 · Quedate Tranquilo', 'Carrusel del lote 7, el padrillo Viejo Campero Quedate Tranquilo: foto'),
-        vid('0b6c19e6b74d1a302409f8d52242bb55', 'f5a0192b10eea5e6fd105eb988d0d5ec', 'Lote 7 · Video', 'Video del padrillo Quedate Tranquilo', 304),
-        img('81a322d66d5aa52d12b656a3476cb0aa', '4:5', 'Lote 7 · Pedigree', 'Placa de pedigree de Quedate Tranquilo'),
-        vid('e30ed8500f92e3d0676d6a4062951516', '6140c321f3843f38d691ae033dc7df33', 'Lote 14 · Reliquia, con la voz de Fernando', 'Carrusel del lote 14, la yegua Viejo Campero Reliquia: portada animada con la voz de Fernando', 304),
-        vid('61cc7f5e3bdff231162187d5b3a969e2', '691c758f0bb881a13c85fe529094fd91', 'Lote 14 · Video', 'Video de la yegua Reliquia', 304),
-        vid('726dd735a090a200f1a46970a418ef2a', '52604b45f15b12cea34b429d4fc48e72', 'Lote 14 · Pedigree', 'Placa de pedigree de Reliquia', 304)
-      ] },
       { id: 'reels', nombre: 'Reels por categoría', items: [
+        vid('2472c0e71e8c36a5e7ba5c1130105ac0', 'bfa1ae5f8b68b3fe6487d38933e2fdda', 'Embriones', 'Reel de los embriones del remate, lotes 3 al 6'),
         vid('e754f453bafe3f86b3131bdf9df6bbeb', '0fc746c127e6a61d7d0ec145da95e409', 'Padrillos · el reel más visto', 'Reel de los padrillos del remate, lotes 7, 8 y 37 al 40'),
-        vid('dfabee0a432a831c6e63c786cfd08154', 'ca941ef2e401b28fd29531ffa8890d5f', 'Yeguas', 'Reel de las yeguas del remate, lotes 9 al 21')
+        vid('dfabee0a432a831c6e63c786cfd08154', 'ca941ef2e401b28fd29531ffa8890d5f', 'Yeguas', 'Reel de las yeguas del remate, lotes 9 al 21'),
+        vid('f19dc92a1e0b6a54e90d436c9924b153', '8c110c6be7fbfbe8d0c4b37186e666c6', 'Potrancas', 'Reel de las potrancas del remate, lotes 22 al 36'),
+        vid('d5b0b3965f055457396324a166d7ba0f', '5610fdfc94983865ad959a4136636137', 'Castrados', 'Reel de los castrados del remate, lotes 41 al 51')
       ] },
       { id: 'historias', nombre: 'Historias con link', items: [
         img('e3963872c617687bdf1532784af94ccd', '9:16', 'Potrancas · carátula', 'Historia de carátula de las potrancas, lotes 22 al 36'),
@@ -720,27 +713,13 @@ class Component extends DCLogic {
         img('2102937f684e39d3df8e54a594482b19', '9:16', 'Cierre de preofertas', 'Historia del cierre de preofertas, hasta hoy a las 15 hs'),
         img('8481cb27c7036814c8c6914ef23bbfd3', '9:16', 'En vivo', 'Historia para seguir el remate en vivo a las 19:30')
       ] },
-      { id: 'criollos', nombre: 'Carrusel 51 criollos', items: [
-        img('ea3a9ee74f9650825b73941578b5c0e8', '4:5', 'Portada', 'Carrusel 51 criollos: portada'),
-        img('4e10c16f849846e4d74631f6f9ac7762', '4:5', 'Servicios', 'Carrusel 51 criollos: servicios, lotes 1 y 2'),
-        img('363043bd0643fa46410779f1395a20ea', '4:5', 'Embriones', 'Carrusel 51 criollos: embriones, lotes 3 al 6'),
-        img('40882990254629f5311d1e5c399dd405', '4:5', 'Padrillos', 'Carrusel 51 criollos: 6 padrillos'),
-        img('9ebca31581d45fa804066b4f854557cb', '4:5', 'Yeguas', 'Carrusel 51 criollos: 13 yeguas'),
-        img('a886ff51376cd0bdaad814adc5c2f1fc', '4:5', 'Potrancas', 'Carrusel 51 criollos: 15 potrancas'),
-        img('a5f3db24460e98c7a0fc06327ad67893', '4:5', 'Castrados', 'Carrusel 51 criollos: 11 castrados'),
-        img('57d79240a335888f7a8c8304d0f1c963', '4:5', 'Cómo comprar', 'Carrusel 51 criollos: condiciones de compra')
-      ] },
       { id: 'cierre', nombre: 'Reels de cierre', items: [
         vid('b54bdbf31c0fc69a6af7fd5b2b13ca89', '48922d5d8dc2e730c79ccf6df2710e2d', 'Así fue el remate', 'Reel con el resumen de la noche del remate'),
+        vid('e7ba88d355115e1c672df6af51196330', '683e637c08ed8aa5f435be6826d50a1a', 'Gracias de Fernando', 'Reel de agradecimiento de Fernando'),
         vid('1a9d09eee1490a2216acaa303783422c', '97b666fc88331ab92d8c45d9c226959d', 'Gracias de Paula y Fernando', 'Reel de agradecimiento de Paula y Fernando')
-      ] },
-      { id: 'informe', nombre: 'Informe final', items: [
-        img('d86f0d6edad1597d69311754e40b52cd', 'A4', 'Resumen', 'Informe final, página 1: resumen de resultados'),
-        img('a5bac48f7d39d5989c0add525ed91943', 'A4', 'Preofertas día por día', 'Informe final, página 2: evolución de las preofertas'),
-        img('660a5e52ec1a4d3bacfea41a74a63e43', 'A4', 'Alcance por pieza', 'Informe final, página 3: de dónde vinieron las visualizaciones')
       ] }
     ];
-    const dmGrupoId = s.dmGrupo ?? 'lotes';
+    const dmGrupoId = s.dmGrupo ?? 'reels';
     const dmGrupos = dmGruposData.map((g) => {
       const on = g.id === dmGrupoId;
       return {
